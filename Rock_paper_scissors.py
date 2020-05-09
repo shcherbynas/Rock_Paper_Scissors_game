@@ -35,7 +35,7 @@ def int_check(question, low=None):
 def item_check():
     global users_choice
 
-    users_choice = input ("Please chose rock (r), paper (p) or scissors (s): ")
+    users_choice = input("Please chose rock (r), paper (p) or scissors (s): ")
     if users_choice == "rock" or users_choice == "r" or users_choice == "Rock" or users_choice == "ROCK" or users_choice == "R":
         users_choice = "rock"
     elif users_choice == "paper" or users_choice == "Paper" or users_choice == "PAPER" or users_choice == "p" or users_choice == "P":
@@ -51,17 +51,28 @@ def item_check():
 # setting up a winning system
 def winning_system():
     global rounds_allowed
-    global computers_choice
-    global users_choice
-
+    for i in range(1,rounds_allowed+1):
+        print()
+        print("Round {} of ".format(i) + "{}".format(rounds_allowed))
+        print()
+        computers_choice = random.choice(tokens)
+        users_choice = item_check()
+        if users_choice == "rock" and computers_choice == "scissors" or users_choice == "paper" and computers_choice == "rock" or users_choice == "scissors" and computers_choice == "paper":
+            decoration_statement("You: {}". format(users_choice) + "    Computer: {}".format(computers_choice), "-")
+            decoration_statement("You won!", "*")
+        elif users_choice == "scissors" and computers_choice == "rock" or users_choice == "rock" and computers_choice == "paper" or users_choice == "paper" and computers_choice == "scissors":
+            decoration_statement("You: {}".format(users_choice) + "    Computer: {}".format(computers_choice), "-")
+            decoration_statement("You lost", "#")
+        else:
+            decoration_statement("You: {}".format(users_choice) + "    Computer: {}".format(computers_choice), "-")
+            decoration_statement("It's a tie", "^")
 
 # creating a list of tokens
 tokens = ["rock", "paper", "scissors"]
 
 # initializing variables
 rounds_allowed = int_check("How many rounds do you want to play? ", 2)
-computers_choice = random.choice(tokens)
-users_choice = item_check()
 
-print(users_choice)
+
+# print(users_choice)
 winning_system()
