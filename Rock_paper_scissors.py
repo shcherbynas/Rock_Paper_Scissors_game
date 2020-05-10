@@ -9,6 +9,7 @@ def decoration_statement(statement, char):
     print(char * len(statement))
     print()
 
+
 # setting up a function that checks if user wrote an integer
 def int_check(question, low=None):
     global error
@@ -54,7 +55,7 @@ def winning_system():
     wins = 0
     losses = 0
     draws = 0
-    for i in range(1,rounds_allowed+1):
+    for i in range(1, rounds_allowed+1):
         print()
         print("Round {} of ".format(i) + "{}".format(rounds_allowed))
         computers_choice = random.choice(tokens)
@@ -71,17 +72,29 @@ def winning_system():
             decoration_statement("You: {}".format(users_choice) + "    Computer: {}".format(computers_choice), "-")
             decoration_statement("It's a tie", "^")
             draws += 1
-    print()
-    print("       Game summary")
+    print("         Game summary")
     decoration_statement("Wins: {}".format(wins) + "  |  Losses: {}".format(losses) + "  |  Draws: {}".format(draws), "%")
 
 
+# introduction, rules
+print()
+decoration_statement("    Welcome to the 'Rock, Paper, Scissors' game    ", "<")
+print("This is the old famous game 'Rock, Paper, Scissors'.")
+print("At the beginning of the game you can chose how many rounds you will play.")
+print("Then you need to chose whether rock, paper or scissors and the computer will randomly generate one of these items too.")
+print("Rock breaks scissors, scissors cuts paper, paper covers rock.")
+print("Let's start! Good luck!")
+
 # creating a list of tokens
 tokens = ["rock", "paper", "scissors"]
-
-# initializing variables
-rounds_allowed = int_check("How many rounds do you want to play? ", 2)
-
-
-# print(users_choice)
-winning_system()
+# creating a variable 'keep_going' for being able to continue or quit the game
+keep_going = ""
+while keep_going == "":
+    # initializing variable
+    rounds_allowed = int_check("How many rounds do you want to play? ", 2)
+    # run winning system
+    winning_system()
+    # asking user if they want to continue playing
+    keep_going = input("Press <enter> to continue or any other key to quit ")
+else:
+    print("Game finished. Thank you for playing!")
