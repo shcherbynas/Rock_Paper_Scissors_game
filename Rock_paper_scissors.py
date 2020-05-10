@@ -51,21 +51,30 @@ def item_check():
 # setting up a winning system
 def winning_system():
     global rounds_allowed
+    wins = 0
+    losses = 0
+    draws = 0
     for i in range(1,rounds_allowed+1):
         print()
         print("Round {} of ".format(i) + "{}".format(rounds_allowed))
-        print()
         computers_choice = random.choice(tokens)
         users_choice = item_check()
         if users_choice == "rock" and computers_choice == "scissors" or users_choice == "paper" and computers_choice == "rock" or users_choice == "scissors" and computers_choice == "paper":
             decoration_statement("You: {}". format(users_choice) + "    Computer: {}".format(computers_choice), "-")
             decoration_statement("You won!", "*")
+            wins += 1
         elif users_choice == "scissors" and computers_choice == "rock" or users_choice == "rock" and computers_choice == "paper" or users_choice == "paper" and computers_choice == "scissors":
             decoration_statement("You: {}".format(users_choice) + "    Computer: {}".format(computers_choice), "-")
             decoration_statement("You lost", "#")
+            losses += 1
         else:
             decoration_statement("You: {}".format(users_choice) + "    Computer: {}".format(computers_choice), "-")
             decoration_statement("It's a tie", "^")
+            draws += 1
+    print()
+    print("       Game summary")
+    decoration_statement("Wins: {}".format(wins) + "  |  Losses: {}".format(losses) + "  |  Draws: {}".format(draws), "%")
+
 
 # creating a list of tokens
 tokens = ["rock", "paper", "scissors"]
