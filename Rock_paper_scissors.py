@@ -45,6 +45,8 @@ def item_check():
         users_choice = "scissors"
     else:
         print("Sorry, I don't understand")
+        print()
+        # run this function to ask user again
         item_check()
     return users_choice
 
@@ -83,6 +85,7 @@ print("This is the old famous game 'Rock, Paper, Scissors'.")
 print("At the beginning of the game you can chose how many rounds you will play.")
 print("Then you need to chose whether rock, paper or scissors and the computer will randomly generate one of these items too.")
 print("Rock breaks scissors, scissors cuts paper, paper covers rock.")
+print()
 print("Let's start! Good luck!")
 
 # creating a list of tokens
